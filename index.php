@@ -1,10 +1,6 @@
 <?php
 
-require 'assets/php/database.php';
-require 'assets/php/price.php';
 
-$dbh = new Database('localhost', 'stations', 'admin', 'admin');
-$price = new Price('price.php');
 
 ?>
 <!DOCTYPE html>
