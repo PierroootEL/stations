@@ -3,10 +3,12 @@ import requests
 import time
 import zipfile
 import datetime
+import json
+import xmltodict
 
 class refresh_data:
     def __init__(self):
-        self.path = 'C:/Users/pierreb/Documents/stations/refresh_data/'
+        self.path = 'I:/stations/refresh_data/'
         self.date = datetime.datetime.now() - datetime.timedelta(days=1)
 
     def mainIsXmlFileAlreadyExists(self):
@@ -71,3 +73,18 @@ class refresh_data:
             exit(5)
         else:
             print("Fichier XML renommé avec succès \n")
+
+    def mainXmltoJson(self):
+        print("Début de la conversion du XML en JSON \n")
+        with open(self.path + "data.xml") as xml_file:
+            data_dict = xmltodict.parse(xml_file.read())
+        xml_file.close()
+
+        json_data = json.dumps(data_dict)
+
+        with open(self.path + "data.json", "w") as json_file:
+            json_file.write(json_data)
+
+            json_file.close()
+
+        print("Conversion terminée avec succès \n")

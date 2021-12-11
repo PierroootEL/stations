@@ -13,3 +13,5 @@ main.mainUnzipFile()
 main.mainDeleteCompressedData()
 
 main.mainRenameXmlData()
+
+main.mainXmltoJson()
