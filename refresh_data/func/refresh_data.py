@@ -13,9 +13,14 @@ class refresh_data:
 
     def mainIsXmlFileAlreadyExists(self):
         if os.path.isfile('data.xml'):
-            print("Le fichier existe déjà ! Suppression en cours \n")
+            print("Le fichier XML existe déjà ! Suppression en cours \n")
 
             os.remove(self.path + 'data.xml')
+
+        if os.path.isfile('data.json'):
+            print("Le fichier JSON existe déjà ! Suppression en cours \n")
+
+            os.remove(self.path + 'data.json')
 
             return True
         elif os.path.isfile('prix.xml') == False:
@@ -73,6 +78,16 @@ class refresh_data:
             exit(5)
         else:
             print("Fichier XML renommé avec succès \n")
+
+    def mainDataLog(self):
+        log = self.date.strftime("%Y") + ':' + self.date.strftime("%m") + ':' + self.date.strftime("%d") + '_' + self.date.strftime("%H") + ':' + self.date.strftime("%M") + ':' + self.date.strftime("%S")
+
+        json_data = json.dumps(log)
+
+        with open(self.path + "log.json", "w") as json_file:
+            json_file.write(json_data)
+
+            json_file.close()
 
     def mainXmltoJson(self):
         print("Début de la conversion du XML en JSON \n")

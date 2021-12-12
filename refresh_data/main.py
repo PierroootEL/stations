@@ -14,4 +14,6 @@ main.mainDeleteCompressedData()
 
 main.mainRenameXmlData()
 
+main.mainDataLog()
+
 main.mainXmltoJson()

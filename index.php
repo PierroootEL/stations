@@ -1,6 +1,8 @@
 <?php
 
+    require 'assets/class/data.php';
 
+    $data = new Data();
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +28,7 @@
             <div class="content">
                 <div class="content-box actualisation">
                     <h1>Dernière actualisation</h1>
-
+                    <h3>Les données ont été actualisées il y a 3h</h3>
                 </div>
                 <div class="content-box price">
                     <h1>Carburant le plus chère en france en ce moment</h1>
