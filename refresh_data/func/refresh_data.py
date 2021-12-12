@@ -80,6 +80,9 @@ class refresh_data:
             print("Fichier XML renommé avec succès \n")
 
     def mainDataLog(self):
+        if os.path.isfile('log.json'):
+            os.remove('log.json')
+
         log = self.date.strftime("%Y") + ':' + self.date.strftime("%m") + ':' + self.date.strftime("%d") + '_' + self.date.strftime("%H") + ':' + self.date.strftime("%M") + ':' + self.date.strftime("%S")
 
         json_data = json.dumps(log)
