@@ -8,7 +8,7 @@ import xmltodict
 
 class refresh_data:
     def __init__(self):
-        self.path = 'I:/stations/refresh_data/'
+        self.path = 'C:/Users/Pierre/Documents/stations/refresh_data/'
         self.date = datetime.datetime.now() - datetime.timedelta(days=1)
 
     def mainIsXmlFileAlreadyExists(self):
@@ -80,8 +80,10 @@ class refresh_data:
             print("Fichier XML renommé avec succès \n")
 
     def mainDataLog(self):
-        if os.path.isfile('log.json'):
-            os.remove('log.json')
+        if os.path.isfile(self.path + 'log.json'):
+            os.remove(self.path + 'log.json')
+
+            print("Fichier de log supprimé avec succès !")
 
         log = self.date.strftime("%Y") + ':' + self.date.strftime("%m") + ':' + self.date.strftime("%d") + '_' + self.date.strftime("%H") + ':' + self.date.strftime("%M") + ':' + self.date.strftime("%S")
 
