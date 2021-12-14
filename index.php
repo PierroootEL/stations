@@ -28,21 +28,21 @@
             <div class="content">
                 <div class="content-box actualisation">
                     <h1>Dernière actualisation</h1>
-                    <h3><?php print($data->dataGetLastUpdated()[0]) . ' à ' . $data->dataGetLastUpdated()[1]; ?></h3>
+                    <h3><?php print($data->dataGetLastUpdated()); ?></h3>
                 </div>
                 <div class="content-box price">
                     <h1>Carburant le moins chère en france en ce moment</h1>
-                    <h3>Gazole : <?php print($data->dataPricelessFuel()[0]['prix'] . ' centimes d\'€ au ' . $data->dataPricelessFuel()[0]['adresse'] . ', ' . $data->dataPricelessFuel()[0]['ville']) . ' (' . $data->dataPricelessFuel()[0]['cp'] . ')';  ?></h3>
-                    <h3>SP95 : <?php print($data->dataPricelessFuel()[1]['prix'] . ' centimes d\'€ au ' . $data->dataPricelessFuel()[1]['adresse'] . ', ' . $data->dataPricelessFuel()[1]['ville']) . ' (' . $data->dataPricelessFuel()[1]['cp'] . ')'; ?></h3>
-                    <h3>SP98 : <?php print($data->dataPricelessFuel()[2]['prix'] . ' centimes d\'€ au ' . $data->dataPricelessFuel()[2]['adresse'] . ', ' . $data->dataPricelessFuel()[2]['ville']) . ' (' . $data->dataPricelessFuel()[2]['cp'] . ')'; ?></h3>
-                    <h3>E85 : <?php print($data->dataPricelessFuel()[3]['prix'] . ' centimes d\'€ au ' . $data->dataPricelessFuel()[3]['adresse'] . ', ' . $data->dataPricelessFuel()[3]['ville']) . ' (' . $data->dataPricelessFuel()[3]['cp'] . ')'; ?></h3>
+                    <h3>Gazole : <?php print($data->dataPricelessFuel()['gazole']);  ?></h3>
+                    <h3>SP95 : <?php print($data->dataPricelessFuel()['SP95']); ?></h3>
+                    <h3>SP98 : <?php print($data->dataPricelessFuel()['SP98']); ?></h3>
+                    <h3>E85 : <?php print($data->dataPricelessFuel()['E85']); ?></h3>
                 </div>
                 <div class="content-box price">
                     <h1>Carburant le plus chère en france en ce moment</h1>
-                    <h3>Gazole : <?php print($data->dataExpensiveFuel()[0]['prix'] . ' centimes d\'€ au ' . $data->dataExpensiveFuel()[0]['adresse'] . ', ' . $data->dataExpensiveFuel()[0]['ville']) . ' (' . $data->dataExpensiveFuel()[0]['cp'] . ')';  ?></h3>
-                    <h3>SP95 : <?php print($data->dataExpensiveFuel()[1]['prix'] . ' centimes d\'€ au ' . $data->dataExpensiveFuel()[1]['adresse'] . ', ' . $data->dataExpensiveFuel()[1]['ville']) . ' (' . $data->dataExpensiveFuel()[1]['cp'] . ')'; ?></h3>
-                    <h3>SP98 : <?php print($data->dataExpensiveFuel()[2]['prix'] . ' centimes d\'€ au ' . $data->dataExpensiveFuel()[2]['adresse'] . ', ' . $data->dataExpensiveFuel()[2]['ville']) . ' (' . $data->dataExpensiveFuel()[2]['cp'] . ')'; ?></h3>
-                    <h3>E85 : <?php print($data->dataExpensiveFuel()[3]['prix'] . ' centimes d\'€ au ' . $data->dataExpensiveFuel()[3]['adresse'] . ', ' . $data->dataExpensiveFuel()[3]['ville']) . ' (' . $data->dataExpensiveFuel()[3]['cp'] . ')'; ?></h3>
+                    <h3>Gazole : <?php print($data->dataExpensiveFuel()['gazole']);  ?></h3>
+                    <h3>SP95 : <?php print($data->dataExpensiveFuel()['SP95']); ?></h3>
+                    <h3>SP98 : <?php print($data->dataExpensiveFuel()['SP98']); ?></h3>
+                    <h3>E85 : <?php print($data->dataExpensiveFuel()['E85']); ?></h3>
                 </div>
             </div>
         </div>
