@@ -57,6 +57,8 @@
             'prix' => 0
         );
 
+        private $_zip_code_stations = array();
+
         public function __construct()
         {
             $this->_data = json_decode(file_get_contents(self::DATA_PATH . 'data.json'), true);
@@ -69,19 +71,20 @@
             $lastUpdated = explode('T', $brutDate);
 
             return (array)[
-              0 => $lastUpdated[0],
-              1 => $lastUpdated[1]
+                0 => $lastUpdated[0],
+                1 => $lastUpdated[1]
             ];
         }
 
-        public function dataPricelessFuel(){
-            foreach ($this->_data['pdv_liste']['pdv'] as $station){
-                if (array_key_exists('prix', $station)){
-                    foreach ($station['prix'] as $station_prix){
-                        if(!array_key_exists('@nom', (array)$station_prix)) {
+        public function dataPricelessFuel(): array
+        {
+            foreach ($this->_data['pdv_liste']['pdv'] as $station) {
+                if (array_key_exists('prix', $station)) {
+                    foreach ($station['prix'] as $station_prix) {
+                        if (!array_key_exists('@nom', (array)$station_prix)) {
                             continue;
                         }
-                        if(!array_key_exists('@valeur', (array)$station_prix)) {
+                        if (!array_key_exists('@valeur', (array)$station_prix)) {
                             continue;
                         }
                         switch ($station_prix['@nom']) {
@@ -130,16 +133,17 @@
             ];
         }
 
-        public function dataExpensiveFuel(){
-            foreach ($this->_data['pdv_liste']['pdv'] as $station){
+        public function dataExpensiveFuel(): array
+        {
+            foreach ($this->_data['pdv_liste']['pdv'] as $station) {
                 if (!array_key_exists('prix', $station)) {
                     continue;
                 }
-                foreach ($station['prix'] as $station_prix){
-                    if(!array_key_exists('@nom', (array)$station_prix)) {
+                foreach ($station['prix'] as $station_prix) {
+                    if (!array_key_exists('@nom', (array)$station_prix)) {
                         continue;
                     }
-                    if(array_key_exists('@valeur', (array)$station_prix)){
+                    if (array_key_exists('@valeur', (array)$station_prix)) {
                         switch ($station_prix['@nom']) {
                             case 'Gazole':
                                 if ($station_prix['@valeur'] > $this->_temp_gazoile_much['prix']) {
@@ -187,6 +191,23 @@
         }
 
 
+        public function getStationsByZipCode(int $zip_code): array
+        {
+            $i = 0;
+            foreach ($this->_data['pdv_liste']['pdv'] as $stations) {
+                if ($stations['@cp'] != $zip_code) {
+                    continue;
+                }
+                $this->_zip_code_stations[$i] = array(
+                    'adresse' => $stations['adresse'],
+                    'ville' => $stations['ville'],
+                    'prix' => array_key_exists('prix', $stations) ? $stations['prix'] : null
+                );
+                $i++;
+            }
+
+            return $this->_zip_code_stations;
+        }
 
     }
 
