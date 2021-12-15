@@ -3,7 +3,7 @@
     class Data
     {
         /** Private const */
-        private const DATA_PATH = 'C:/Users/Pierre/Documents/stations/refresh_data/';
+        private const DATA_PATH = 'I:/stations/refresh_data/';
 
         /** Private variable */
         private $_data;
@@ -190,13 +190,23 @@
         }
 
 
-        public function getStationsByZipCode(int $zip_code)
+        public function getStationsByZipCode(string $zip_code)
         {
+            if (empty($zip_code)){
+                print "<h2>Merci de renseigner un code postal !</h2>";
+
+                exit();
+            }
             $i = 0;
             foreach ($this->_data['pdv_liste']['pdv'] as $stations) {
                 if ($stations['@cp'] != $zip_code) {
+                    $i++;
+                    if ($i >= count($this->_data['pdv_liste']['pdv'])){
+                        print "<h2>Aucune stations n'est présente</h2>";
+                    }
                     continue;
                 }
+
                 if (!array_key_exists('prix', $stations)) {
                     print "<h2>La station situé au {$stations['adresse']}, {$stations['ville']}</h2>";
                     print "<h3>Ne dispose pas de carburant</h3>";
@@ -209,13 +219,6 @@
                     print "<h3>{$station_prix['@nom']} : {$station_prix['@valeur']} €</h3>";
                 }
                 print "<br>";
-                $i++;
-
-                print $i;
-
-                if ($i == 0){
-                    print "<h2>Aucune stations n'est présente</h2>";
-                }
             }
 
         }

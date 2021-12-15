@@ -8,7 +8,7 @@ import xmltodict
 
 class refresh_data:
     def __init__(self):
-        self.path = 'C:/Users/Pierre/Documents/stations/refresh_data/'
+        self.path = 'I:/stations/refresh_data/'
         self.date = datetime.datetime.now() - datetime.timedelta(days=1)
 
     def mainIsXmlFileAlreadyExists(self):
