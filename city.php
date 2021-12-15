@@ -5,7 +5,7 @@
     $data = new Data();
 
     if (isset($_GET['cp_search'])){
-        $stations = $data->getStationsByZipCode($_GET['cp_search']);
+        // $stations = $data->getStationsByZipCode($_GET['cp_search']);
     }
 
 ?>
@@ -38,17 +38,7 @@
             </div>
             <?php if (isset($_GET['cp_search'])){ ?>
             <div class="content-box">
-                <?php foreach ($stations as $station){ ?>
-                    <h2>Station de <?php print($station['ville']); ?> situé sur <?php print($station['adresse']); ?> : </h2>
-                <?php if(array_key_exists('prix', $station)){
-                        foreach ($station['prix'] as $station_prix) {
-                            print '<h3>' . $station_prix['@nom'] . ' : ' . $station_prix['@valeur'] . '€' . '</h3>';
-                        }
-                    }else{
-                        print '<h3>Aucun carburant n\'est disponible à cette station</h3>';
-                    }
-                }
-                ?>
+                <?php $data->getStationsByZipCode($_GET['cp_search']); ?>
             </div>
             <?php } ?>
         </div>
