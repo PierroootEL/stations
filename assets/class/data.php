@@ -3,7 +3,7 @@
     class Data
     {
         /** Private const */
-        private const DATA_PATH = 'I:/stations/refresh_data/';
+        const DATA_PATH = 'C:/Users/Pierre/Documents/stations/refresh_data/';
 
         /** Private variable */
         private $_data;
